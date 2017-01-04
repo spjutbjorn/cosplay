@@ -44,7 +44,7 @@ void startup(){
 
 
   if(i % 2 == 0){
-    stick.setPixelColor(stickCount, stick.Color(0,150,0)); 
+    stick.setPixelColor(stickCount, stick.Color(150,0,0)); 
     stickCount++;
   }
   
