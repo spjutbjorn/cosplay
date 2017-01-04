@@ -15,6 +15,7 @@ Adafruit_NeoPixel ring = Adafruit_NeoPixel(ADARINGPIXELS, ADARING, NEO_GRB + NEO
 
 int delayval = 400; // delay for half a second
 long randNumber;
+long randDelay;
 
 void setup() {
   stick.begin(); 
@@ -43,7 +44,7 @@ void startup(){
 
 
   if(i % 2 == 0){
-    stick.setPixelColor(stickCount, stick.Color(150,0,0)); 
+    stick.setPixelColor(stickCount, stick.Color(0,150,0)); 
     stickCount++;
   }
   
