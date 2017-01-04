@@ -4,8 +4,8 @@
   #include <avr/power.h>
 #endif
 
-#define ADASTICK 6
-#define ADARING 2
+#define ADASTICK 2
+#define ADARING 6
 #define ADASTICKPIXELS 8 
 #define ADARINGPIXELS 16
 
