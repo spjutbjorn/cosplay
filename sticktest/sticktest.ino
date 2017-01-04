@@ -28,7 +28,8 @@ void setup() {
 
 void loop() {
   randNumber = random(100);
-  delay(5000);
+  randDelay = random(60000);
+  delay(randDelay);
 
   if(randNumber < 70)
     pulse();
