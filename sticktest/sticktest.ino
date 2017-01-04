@@ -13,17 +13,27 @@
 Adafruit_NeoPixel stick = Adafruit_NeoPixel(ADASTICKPIXELS, ADASTICK, NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel ring = Adafruit_NeoPixel(ADARINGPIXELS, ADARING, NEO_GRB + NEO_KHZ800);
 
-int delayval = 200; // delay for half a second
+int delayval = 400; // delay for half a second
+long randNumber;
 
 void setup() {
   stick.begin(); 
   ring.begin();
+  
+  Serial.begin(9600);
+  randomSeed(analogRead(0));
+  
   startup();
 }
 
 void loop() {
-  delay(50000);
-  pulse();
+  randNumber = random(100);
+  delay(5000);
+
+  if(randNumber < 70)
+    pulse();
+  else
+    scan();
 }
 
 void startup(){
@@ -47,7 +57,7 @@ void startup(){
 
 void pulse(){
     int count = 16;
-    int delayms = 20;
+    int delayms = delayval / 10;
     for(int i=count;i>0;i--){
       setBrightness(254/(count - i));
       delay(delayms); 
@@ -68,4 +78,39 @@ void setBrightness(int brightness){
     
     stick.show(); 
     ring.show(); 
+}
+
+void scan(){
+  colorWipe(ring.Color(255, 0, 0), 50); // Red
+  
+  theaterChase(ring.Color(127, 0, 0), 50); // Red 
+
+  colorWipe(ring.Color(255, 0, 0), 50); // Red
+}
+
+// Fill the dots one after the other with a color
+void colorWipe(uint32_t c, uint8_t wait) {
+  for(uint16_t i=0; i<ring.numPixels(); i++) {
+    ring.setPixelColor(i, c);
+    ring.show();
+    delay(wait);
+  }
+}
+
+//Theatre-style crawling lights.
+void theaterChase(uint32_t c, uint8_t wait) {
+  for (int j=0; j<10; j++) {  //do 10 cycles of chasing
+    for (int q=0; q < 3; q++) {
+      for (uint16_t i=0; i < ring.numPixels(); i=i+3) {
+        ring.setPixelColor(i+q, c);    //turn every third pixel on
+      }
+      ring.show();
+
+      delay(wait);
+
+      for (uint16_t i=0; i < ring.numPixels(); i=i+3) {
+        ring.setPixelColor(i+q, 0);        //turn every third pixel off
+      }
+    }
+  }
 }
