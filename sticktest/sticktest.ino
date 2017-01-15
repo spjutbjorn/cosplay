@@ -32,7 +32,7 @@ void loop() {
   randDelay = random(60000);
   delay(randDelay);
 
-  if(randNumber < 70)
+  if(randNumber < 90)
     pulse();
   else
     scan();
@@ -84,6 +84,10 @@ void setBrightness(int brightness){
 
 void scan(){
   colorWipe(ring.Color(255, 0, 0), 50); // Red
+  
+  theaterChase(ring.Color(127, 0, 0), 50); // Red 
+
+  theaterChase(ring.Color(127, 0, 0), 50); // Red 
   
   theaterChase(ring.Color(127, 0, 0), 50); // Red 
 
