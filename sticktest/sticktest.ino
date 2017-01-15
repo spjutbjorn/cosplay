@@ -83,15 +83,15 @@ void setBrightness(int brightness){
 }
 
 void scan(){
-  colorWipe(ring.Color(255, 0, 0), 50); // Red
+  colorWipe(ring.Color(255, 0, 0), 200); // Red
   
   theaterChase(ring.Color(127, 0, 0), 50); // Red 
 
-  theaterChase(ring.Color(127, 0, 0), 50); // Red 
+  theaterChase(ring.Color(255, 0, 255), 50); // Red 
   
   theaterChase(ring.Color(127, 0, 0), 50); // Red 
 
-  colorWipe(ring.Color(255, 0, 0), 50); // Red
+  colorWipe(ring.Color(255, 0, 0), 200); // Red
 }
 
 // Fill the dots one after the other with a color
